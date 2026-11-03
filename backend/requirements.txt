@@ -1,0 +1,30 @@
+# Core
+feedparser>=6.0          # RSS/Atom ingestion
+fastapi>=0.110           # REST API + dashboard host
+uvicorn[standard]>=0.29  # ASGI server
+numpy>=1.26              # vector maths
+
+# Optional — only needed for the upgrade paths
+# sentence-transformers>=2.7   # EMBEDDER=minilm  (local semantic embeddings)
+# openai>=1.30                 # LLM_PROVIDER=openai / EMBEDDER=openai
+# trafilatura>=1.8             # higher-quality article body extraction (urllib path)
+
+# --- full-text extraction backends (FETCHER=...) -------------------------
+# crawl4ai is a two-step install: the package, then the browser it drives.
+#   pip install crawl4ai
+#   crawl4ai-setup          # or: python -m playwright install chromium
+# The browser also needs system libraries (libnspr4, libnss3, libasound2).
+# On Debian/Ubuntu:  python -m playwright install-deps
+# If any of that is missing the fetcher falls back to `urllib` automatically.
+# crawl4ai>=0.7
+
+# Firecrawl needs no extra package — just a key:
+#   pip install nothing;  export FIRECRAWL_API_KEY=fc-...
+
+# celery[redis]>=5.3           # scheduled ingestion instead of the thread
+# redis>=5.0                   # broker + feed cache + rate limiting
+# sqlalchemy>=2.0              # if you prefer an ORM over the stdlib sqlite3
+# psycopg[binary]>=3.1         # PostgreSQL
+# alembic>=1.13                # migrations
+# sentry-sdk>=2.0              # error tracking
+# posthog>=3.5                 # product analytics
